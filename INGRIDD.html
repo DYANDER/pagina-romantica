@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>PARA TI INGRIDD UWU</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #000, #330000);
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .preciosa {
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: red;
+      font-size: 2.5em;
+      font-weight: bold;
+      animation: caer 4s linear infinite;
+    }
+
+    @keyframes caer {
+      0% { top: -50px; opacity: 0; }
+      10% { opacity: 1; }
+      100% { top: 100vh; opacity: 0; }
+    }
+
+    .corazon {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: flotar 10s linear infinite;
+    }
+
+    .corazon::before,
+    .corazon::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .corazon::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .corazon::after {
+      top: 0;
+      left: -10px;
+    }
+
+    @keyframes flotar {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Palabras "Preciosa" que caen -->
+  <div id="contenedor-palabras"></div>
+
+  <!-- Corazones -->
+  <div id="contenedor-corazones"></div>
+
+  <script>
+    // Crear palabras que caen
+    setInterval(() => {
+      const palabra = document.createElement('div');
+      palabra.classList.add('preciosa');
+      palabra.style.left = Math.random() * 90 + "%";
+      palabra.innerText = "INGRIDD PRECIOSA";
+      document.getElementById("contenedor-palabras").appendChild(palabra);
+
+      setTimeout(() => palabra.remove(), 5000);
+    }, 800);
+
+    // Crear corazones que flotan
+    setInterval(() => {
+      const corazon = document.createElement('div');
+      corazon.classList.add('corazon');
+      corazon.style.left = Math.random() * 100 + "vw";
+      corazon.style.bottom = "-30px";
+      corazon.style.animationDuration = (5 + Math.random() * 5) + "s";
+      document.getElementById("contenedor-corazones").appendChild(corazon);
+
+      setTimeout(() => corazon.remove(), 10000);
+    }, 300);
+  </script>
+
+</body>
+</html>
